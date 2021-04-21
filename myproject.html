@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Are you healthy</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
+      body {
+        padding: 20px;
+        background: #fff;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        width: 500px;
+        padding: 10px;
+        position: relative;
+      }
+      .bmr {
+            min-height: 50px;
+            padding: 20px;
+            margin-bottom: 0;
+            text-align: center;
+        }
+      .myform {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        background:#f1f0f0;
+        border-radius: 10px;
+      }
+      .myform .gender {
+        display: flex;
+        width: 40% !important;
+      }
+      div {
+        position: relative;
+        margin-left: 27px;
+      }
+      div label {
+        display: block;
+        color: rgb(193, 202, 198);
+        position: absolute;
+        top: 20px;
+        left: 10px;
+        transition: .5s;
+      }
+      input{
+        width: 90%;
+        outline: none;
+        border: none;
+        height: 25px;
+        padding: 18px;
+        border-radius: 5px;
+        margin: 15px 0;
+      }
+      select {
+        width: 80%;
+        font-size: 17px;
+        border:  none;
+        outline: none;
+        padding: 4px;
+        height: 36px;
+        border-radius: 5px;
+        color: rgb(193, 202, 198);
+        margin-bottom: 10px;
+        margin-left: 1px;
+        letter-spacing: 1px;
+      }
+      input:focus ~ label, select:focus ~ label,
+      
+      input:valid ~ label, select:valid ~ label {
+        top: -6px;
+        color:  #f7497d;
+        z-index: 200;
+        font-size: 17px;
+        font-weight: bold;
+      }
+      
+      #result button {
+        margin: 10px 0;
+        width: 200px;
+        height: 30px;
+        background: #f7497d;
+        color: azure;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        letter-spacing: 2px;
+        font-size: 15px
+      }
+      #result button:focus {
+        box-shadow: 5px 5px 5px #555;
+        
+      }
+      
+    </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+  <form action = "#" class='myform' onsubmit="return false">
+    <h3 class="bmr">BMR claculator</h3>
+
+    <div class="gender">
+      <select name="gender" id="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+  </div>
+
+  <div class="years">
+    <input id= "year" type="text" name="year" id="year" required="">
+    <label for="year">Age : </label>
+  </div>
+
+  <div class="weight">
+     <input type="text" name="weight" id="weight" required="">
+     <label for="weight"> Weight: </label>
+  </div>
+
+  <div class="height">
+    <input type="text" id="height" required="">
+    <label for="height"> Height</label>
+  </div>
+  <div id="result">
+    <button onclick="myfunction()">Cheak Results</button>
+  </div>
+  </form>
+
+  <p id="user-result"></p>
+
+</div>
+	
+  <script>
+    
+    function myfunction() {
+    var bmr;
+    var year = document.getElementById('year').value;
+    var weight = document.getElementById('weight').value;
+    var height = document.getElementById('height').value;
+      height = (height * 12) * 2.5;
+
+    var gender = document.getElementById('gender').value;
+    
+       if (gender == "male") {
+        bmr = 66.47 + (13.75 * weight) + (5.003 * height) - (6.755 * year);
+        document.getElementById('user-result').innerHTML = bmr
+       }
+       else if(gender == "female"){
+        bmr = 655.1 + (9.563 * weight) + (1.85 * height) - (4.676 * year);
+         document.getElementById('user-result').innerHTML = bmr;
+       }
+       else {
+        document.getElementById('user-result').innerHTML = 'Please enter valid number';
+       }
+    }
+
+  </script>
+
+    
+</body>
+</html>
